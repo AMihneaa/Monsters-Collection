@@ -13,6 +13,8 @@ const App = () => {
 
   const URL = "https://jsonplaceholder.typicode.com/users";
 
+  console.log("Render");
+
   useEffect(() => {
     fetch(URL)
       .then((response) => {
@@ -21,13 +23,12 @@ const App = () => {
       .then((users) => {
         setMonsters(users);
       });
-  }, [monsters]);
+  }, []);
 
   useEffect(() => {
     const newMonsters = monsters.filter((monster) =>
       monster.name.toLocaleLowerCase().includes(searchFilter)
     );
-
     setFilteredMonsters(newMonsters);
   }, [searchFilter, monsters]);
 
